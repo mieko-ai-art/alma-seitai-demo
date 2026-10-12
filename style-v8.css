@@ -2355,3 +2355,19 @@ body { line-height: 1.95; }
   .hero-points li { justify-content: flex-start; padding-inline: 4px; line-height: 1.6; }
   .hero-points .num { flex-shrink: 0; width: 36px; height: 36px; font-size: 1rem; }
 }
+
+/* ---------- ⑥ ご予約・お問い合わせ欄：02 の枠に「メール」「LINE」の2つのボタンを並べる ----------
+   01・02 の枠は既存のまま（PC は横並び、960px以下は縦並び）。ボタンは枠の下端にそろえて縦に2つ並べる */
+.reserve-btns {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  margin-top: auto;
+}
+.reserve-btns .btn { margin-top: 0; width: 100%; }
+.reserve-cards .reserve-card > .btn { width: 100%; }   /* 01 のボタンも 02 と同じ幅にそろえる */
+@media (max-width: 360px) {   /* 幅の狭いスマートフォン：メール・LINE のボタン名が折り返さないように */
+  .reserve-card { padding-inline: 20px; }
+  .reserve-card .btn { padding-inline: 12px; letter-spacing: .02em; font-size: .95rem; }
+}
