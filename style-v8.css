@@ -2371,3 +2371,8 @@ body { line-height: 1.95; }
   .reserve-card { padding-inline: 20px; }
   .reserve-card .btn { padding-inline: 12px; letter-spacing: .02em; font-size: .95rem; }
 }
+
+/* ---------- ⑦ スマートフォンだけ：プロフィールの名前「田中身江子」を途中で改行しない ---------- */
+@media (max-width: 960px) {
+  .name-nowrap { white-space: nowrap; }
+}
