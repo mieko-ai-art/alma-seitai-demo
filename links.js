@@ -12,8 +12,8 @@ window.ALMA_LINKS = {
   // 無料診断（からだの痛みチェック）アプリのURL（テスト公開版：同じサイト内の check/ に置いた問診アプリ）
   diagnosis: "check/",
 
-  // ご予約用 Googleフォーム のURL
-  reservation: "https://forms.gle/j6wvcynfiV9X9xfL8",
+  // ご予約用 Googleフォーム のURL（予約・お問い合わせ共通フォーム。ページ内の予約ボタンはすべてここへ直接移動する）
+  reservation: "https://forms.gle/JCkZGnLkBEJnqaNr9",
 
   // LINE公式アカウント（友だち追加）のURL
   line: "https://lin.ee/t6ZOaiV",
