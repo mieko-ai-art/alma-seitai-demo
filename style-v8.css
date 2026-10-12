@@ -2320,3 +2320,38 @@ body { line-height: 1.95; }
   body { padding-bottom: 58px; }
   .toast { bottom: 76px; }
 }
+
+/* ---------- ④ PC（961px以上）だけ：トップの左右のバランス ----------
+   緑の「無料からだチェック」枠を中身に合わせた幅にし、左の文章ブロックを詰めて右の写真と釣り合わせる。
+   スマートフォン（960px以下）には適用しない */
+@media (min-width: 961px) {
+  .hero-lead { margin-top: 22px; }
+  .hero-tagline { margin-top: 14px; }
+  .hero-check {
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 28px;
+    padding: 22px 30px 20px;
+  }
+  .hero-check .check-label { margin-bottom: 12px; }
+  .hero-check .btn-check { min-height: 62px; padding: 0 40px; }
+  .hero-check .check-points { flex-wrap: nowrap; margin-top: 14px; }
+  .hero-actions { margin-top: 20px; }
+  .hero-note { max-width: 32em; }
+}
+
+/* 画面の高さが低いノートPC：見出しから緑の枠までが1画面に収まりやすいように上下を詰める */
+@media (min-width: 961px) and (max-height: 820px) {
+  .hero { padding-top: calc(var(--header-h) + 20px); }
+  .hero-inner { padding-bottom: 48px; }
+  .hero-copy .eyebrow { margin-bottom: 10px; }
+  .hero-title { font-size: clamp(1.6rem, 2.5vw, 2.2rem); line-height: 1.55; }
+  .hero-photo { width: min(420px, 34vw); }
+}
+
+/* ---------- ⑤ スマートフォン（縦並び）だけ：深緑の帯「01・02・03」の左端をそろえる ----------
+   中央寄せだと短い行（03）だけ右にずれるため、左寄せにして番号の丸の大きさを固定する */
+@media (max-width: 960px) {
+  .hero-points li { justify-content: flex-start; padding-inline: 4px; line-height: 1.6; }
+  .hero-points .num { flex-shrink: 0; width: 36px; height: 36px; font-size: 1rem; }
+}
