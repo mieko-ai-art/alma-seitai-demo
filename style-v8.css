@@ -2376,3 +2376,10 @@ body { line-height: 1.95; }
 @media (max-width: 960px) {
   .name-nowrap { white-space: nowrap; }
 }
+
+/* ---------- ⑧ ご予約・お問い合わせ欄：説明文を削除したので、見出しのすぐ下にカードが続く余白にする ----------
+   説明文のない「アルマ整体について」の見出し下の余白（PC 64px／スマートフォン 48px）に合わせる */
+.reserve .reserve-cards { margin-top: 64px; }
+@media (max-width: 960px) {
+  .reserve .reserve-cards { margin-top: 48px; }
+}
