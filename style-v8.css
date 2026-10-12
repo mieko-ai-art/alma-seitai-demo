@@ -2243,3 +2243,80 @@ body { line-height: 1.95; }
 @media (max-width: 400px) {
   .about-text h3 { font-size: 1.15rem; }
 }
+
+
+/* ============================================================
+   公開版の微調整（テスト公開：2026-10）
+   既存の文章・写真・リンクは変えず、背景のメリハリと文字のバランスだけを調整する。
+   色はすべて既存の深緑・アイボリー・ゴールドの変数を使う。
+   元に戻すときは、このブロックをまるごと削除すればよい（Git のタグ before-design-tweak-1 でも戻せる）
+   ============================================================ */
+
+/* ---------- ① 背景のメリハリ ----------
+   トップ：ゴールドのにじみを弱め、アイボリーを基調に深緑のにじみを少しだけ
+   以降：アイボリー（beige-50）とベージュ（beige-100）を交互にし、深緑の帯（特長・メニュー・予約）で締める */
+.hero {
+  background:
+    radial-gradient(circle at 88% 14%, rgba(214, 189, 140, .16), transparent 38%),
+    radial-gradient(circle at 0% 100%, rgba(62, 92, 74, .10), transparent 45%),
+    var(--beige-50);
+}
+.worries { background: var(--beige-100); }
+.about   { background: var(--beige-50); }
+.flow    { background: var(--beige-100); }
+.selfcheck-band { background: var(--beige-50); }
+
+/* トップの「無料からだチェック」：深緑の枠で囲み、ゴールドのボタンをはっきり見せる */
+.hero-check {
+  position: relative;
+  margin-top: 32px;
+  padding: 26px 28px 24px;
+  background: var(--green-800);
+  border-radius: 18px;
+  box-shadow: 0 18px 30px -22px rgba(31, 58, 46, .55);
+}
+.hero-check::before {          /* 内側の細いゴールドの線（ホームページの枠と同じ考え方） */
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(214, 189, 140, .45);
+  border-radius: 13px;
+  pointer-events: none;
+}
+.hero-check .check-label { color: var(--beige-50); }
+.hero-check .btn-check { position: relative; }
+.hero-check .check-points li {
+  background: rgba(251, 248, 242, .08);
+  border-color: rgba(214, 189, 140, .5);
+  color: var(--beige-50);
+}
+.hero-check .check-points li::before { border-color: var(--gold-light); }
+
+/* ---------- ② 文字のバランス（スマートフォン） ---------- */
+@media (max-width: 560px) {
+  /* 導入文：意図した位置（「引き出し、」の後）で改行し、1行に収まる大きさにする */
+  .hero-lead { font-size: clamp(13px, 4vw, 17px); line-height: 2; }
+  .hero-lead br { display: inline; }
+
+  /* 「体と向き合う、新しい選択を。」を1行に収める */
+  .hero-tagline {
+    gap: 10px;
+    font-size: clamp(15px, 4.6vw, 19px);
+    letter-spacing: .06em;
+    white-space: nowrap;
+  }
+  .hero-tagline::before,
+  .hero-tagline::after { width: 14px; }
+
+  .hero-check { margin-top: 28px; padding: 22px 16px 20px; }
+  .hero-check .check-label { font-size: 1rem; letter-spacing: .06em; }
+}
+
+/* ---------- ③ スマートフォン下部の固定ボタンをコンパクトに ----------
+   押しやすさのため高さは 44px（指で押しやすい最小の目安）を確保する */
+@media (max-width: 960px) {
+  .mobile-cta { gap: 6px; padding: 6px 10px calc(6px + env(safe-area-inset-bottom)); }
+  .mobile-cta a { min-height: 44px; font-size: .92rem; letter-spacing: .04em; }
+  body { padding-bottom: 58px; }
+  .toast { bottom: 76px; }
+}
