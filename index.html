@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style-v8.css">
+  <link rel="stylesheet" href="style-v9.css">
 </head>
 <body>
 
@@ -25,12 +25,13 @@
 
       <nav class="global-nav" aria-label="メインメニュー">
         <ul>
-          <li><a href="#" class="nav-diag" data-link="diagnosis">無料からだチェック</a></li>
+          <li><a href="#" class="nav-diag" data-link="bodyCheck">無料からだチェック</a></li>
           <li><a href="#about">アルマ整体</a></li>
           <li><a href="#flow">施術プログラム</a></li>
           <li><a href="#menu">メニュー</a></li>
           <li><a href="#profile">プロフィール</a></li>
-          <li><a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservation" target="_blank" rel="noopener" class="nav-cta">予約</a></li>
+          <li><a href="#access">施術場所・アクセス</a></li>
+          <li><a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservationForm" target="_blank" rel="noopener" class="nav-cta">予約</a></li>
         </ul>
       </nav>
     </div>
@@ -43,6 +44,10 @@
       <div class="wrap hero-inner">
         <div class="hero-copy reveal">
           <p class="eyebrow">Gentle Body Care</p>
+          <p class="hero-area">
+            <span class="pin" aria-hidden="true"></span>
+            <a href="#access"><span class="nowrap-part">埼玉県吉川市</span><span class="sep" aria-hidden="true">｜</span><span class="nowrap-part">自宅サロン・レンタルサロン・出張施術</span></a>
+          </p>
           <h1 class="hero-title">
             <span class="line">痛みの原因が分からない</span><br>
             <span class="line accent">不調に悩むあなたへ</span>
@@ -55,17 +60,16 @@
 
           <div class="hero-check">
             <p class="check-label">まずは、<br class="sp-only">気軽にできるセルフチェックから</p>
-            <a href="#" class="btn btn-gold btn-check" data-link="diagnosis">
+            <a href="#" class="btn btn-gold btn-check" data-link="bodyCheck">
               無料からだチェックを始める <span class="arrow">→</span>
             </a>
             <ul class="check-points" aria-label="無料からだチェックの特長">
-              <li>約30秒</li>
               <li>無料</li>
               <li>スマートフォン対応</li>
             </ul>
           </div>
           <div class="hero-actions">
-            <a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservation" target="_blank" rel="noopener" class="btn btn-outline">
+            <a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservationForm" target="_blank" rel="noopener" class="btn btn-outline">
               ご予約・お問い合わせ <span class="arrow">→</span>
             </a>
           </div>
@@ -101,7 +105,7 @@
           <h2 class="section-title">こんなお悩み、<br>ありませんか？</h2>
           <p class="section-lead">
             原因不明の腰・背中・下半身の痛みに寄り添う整体です。<br>
-            首・肩・腕など上半身のお悩みを含め、全身のご相談にも対応しております。
+            首・肩・腕など、全身のご相談にも対応しています。
           </p>
         </div>
 
@@ -131,12 +135,11 @@
             <h3>ご相談の前に、<br>今の体の状態を<br class="sp-only">チェックしてみませんか？</h3>
             <p>いくつかの質問に答えるだけで、今のお体の傾向を手軽に振り返ることが<span class="nowrap-part">できます。</span></p>
             <ul class="check-points" aria-label="無料からだチェックの特長">
-              <li>約30秒</li>
               <li>無料</li>
               <li>スマートフォン対応</li>
             </ul>
           </div>
-          <a href="#" class="btn btn-gold btn-check" data-link="diagnosis">
+          <a href="#" class="btn btn-gold btn-check" data-link="bodyCheck">
             無料からだチェックを始める <span class="arrow">→</span>
           </a>
         </div>
@@ -159,8 +162,7 @@
           <div class="about-text reveal">
             <h3>ご自身の体の状態を知り、<br>無理なく整えていくことを<span class="nowrap-part">大切に。</span></h3>
             <p>
-              不調の原因は人それぞれ異なり、筋肉だけでなく姿勢の癖や体の使い方、
-              関節や筋肉、神経の働きなど様々な要素が関わっています。
+              不調の原因は人それぞれです。姿勢の癖や体の使い方、関節・筋肉・神経の働きなど、さまざまな要素が関わっています。
             </p>
             <p>
               そのため、体の状態を丁寧に確認しながら
@@ -177,7 +179,7 @@
           <article class="feature reveal">
             <span class="num">01</span>
             <h4>やさしく触れる整体</h4>
-            <p>強く押したり揉んだりせず、数秒やさしく触れるアプローチが特徴です。動いた時に生じる痛みの原因に着目した理論に基づき、関節へ適切に働きかけることで、体が本来の動きを取り戻すサポートを行います。</p>
+            <p>強く押したり揉んだりせず、数秒やさしく触れるアプローチが特徴です。動いた時に生じる痛みの原因に着目した理論に基づいて関節へ働きかけ、体が本来の動きを取り戻すサポートをします。</p>
           </article>
           <article class="feature reveal">
             <span class="num">02</span>
@@ -227,7 +229,7 @@
               <div>
                 <p class="step-when">初回<span>対面</span></p>
                 <h3>状態の確認と関節へのアプローチ</h3>
-                <p>現在の痛みや動きの状態をヒアリングし、手で触れての確認や動作チェックを行います。そのうえで、強く押したり揉んだりしない、やさしく触れる施術で関節へ働きかけます。施術後は、お体の状態を分かりやすくご説明します。</p>
+                <p>痛みや動きの状態を伺い、手で触れての確認と動作チェックを行います。そのうえで、やさしく触れる施術で関節へ働きかけ、施術後にお体の状態をご説明します。</p>
               </div>
             </li>
             <li class="flow-step reveal">
@@ -243,8 +245,8 @@
               <span class="step-num">03</span>
               <div>
                 <p class="step-when">3回目以降<span>必要な方に</span></p>
-                <h3>継続プログラムのご提案</h3>
-                <p>継続したケアが必要な方には、対面での施術とZoomを組み合わせた継続プログラムをご提案します。ご希望やご都合をお伺いしたうえでご案内しますので、無理にお勧めすることはありません。</p>
+                <h3>3回目以降のケア</h3>
+                <p>継続したケアが必要な方には、対面とZoomのメニューをご提案します。ご希望やご都合を伺ったうえでご案内し、無理にお勧めすることはありません。</p>
               </div>
             </li>
           </ol>
@@ -262,12 +264,15 @@
           <p class="section-lead">
             お一人おひとりの状態に合わせて、無理のない来院ペースをご提案します。
           </p>
+          <p class="section-lead menu-payment"><span class="nowrap-part">料金はすべて税込・都度払いです。</span><span class="nowrap-part">回数契約は不要。</span><span class="nowrap-part">1回ずつご利用いただけます。</span></p>
         </div>
+
+        <p class="monitor-banner reveal"><span class="monitor-banner-title">オープニングモニター募集</span><span class="monitor-banner-text">募集開始から6か月間限定</span></p>
 
         <div class="menu-cards">
           <article class="menu-card reveal">
             <span class="tag">はじめての方</span>
-            <h3>初回施術</h3>
+            <h3>初回カウンセリング<span class="nowrap">＋施術</span></h3>
             <p>痛みの原因に着目し、お体の状態を丁寧に確認したうえで施術を行います。</p>
             <ul>
               <li>ヒアリング・手で触れての状態確認</li>
@@ -275,9 +280,13 @@
               <li>やさしく触れる、関節へのアプローチ</li>
               <li>施術後の状態のご説明</li>
             </ul>
-            <div class="price-box">
-              <div class="label">料金</div>
-              <div class="value">ただいま準備中です</div>
+            <div class="price-box price-table">
+              <div class="label">料金（税込）</div>
+              <dl class="price-item">
+                <dt><span class="price-name">初回カウンセリング＋施術</span><span class="price-time">対面60分</span></dt>
+                <dd><span class="price-kind">通常</span><span class="price-yen">15,000円</span></dd>
+                <dd class="is-monitor"><span class="price-kind">モニター</span><span class="price-yen">7,000円</span></dd>
+              </dl>
             </div>
           </article>
 
@@ -288,59 +297,126 @@
             <ul>
               <li>対面での再チェック・動作チェック</li>
               <li>再発予防のためのセルフケアのお伝え</li>
-              <li>痛みが残っている場合は、状態に応じて筋肉を緩める施術や筋肉の働きを促すアプローチ</li>
+              <li>痛みが残っている場合は、状態に応じて筋肉を緩める施術や、筋肉の働きを促すアプローチ</li>
             </ul>
-            <div class="price-box">
-              <div class="label">料金</div>
-              <div class="value">ただいま準備中です</div>
+            <div class="price-box price-table">
+              <div class="label">料金（税込）</div>
+              <dl class="price-item">
+                <dt><span class="price-name">再評価＋セルフケア指導</span><span class="price-time">対面60分</span></dt>
+                <dd><span class="price-kind">通常</span><span class="price-yen">5,000円</span></dd>
+                <dd class="is-monitor"><span class="price-kind">モニター</span><span class="price-yen">3,000円</span></dd>
+              </dl>
+              <dl class="price-item">
+                <dt><span class="price-name">再評価＋施術</span><span class="price-time">対面60分</span></dt>
+                <dd><span class="price-kind">通常</span><span class="price-yen">15,000円</span></dd>
+                <dd class="is-monitor"><span class="price-kind">モニター</span><span class="price-yen">7,000円</span></dd>
+              </dl>
+              <p class="price-note">※当日のお体の状態を確認し、どちらになるかをご説明してから行います。</p>
             </div>
           </article>
 
           <article class="menu-card reveal">
             <span class="tag">3回目以降・必要な方に</span>
-            <h3>継続プログラム</h3>
+            <h3>3回目以降のケア</h3>
             <p>継続したケアが必要な方に、ご希望やご都合をお伺いしたうえでご提案します。</p>
             <ul>
-              <li>対面での施術とZoomを組み合わせたプログラム</li>
+              <li>お身体の状態に合わせて、必要な施術やセルフケアをご提案します。</li>
               <li>お体の状態やご都合に合わせたペースのご相談</li>
             </ul>
-            <div class="price-box">
-              <div class="label">料金</div>
-              <div class="value">ただいま準備中です</div>
+            <details class="price-more">
+              <summary><span class="price-more-open">詳しい料金を見る</span><span class="price-more-close">料金を閉じる</span></summary>
+            <div class="price-box price-table">
+              <div class="label">料金（税込）</div>
+              <dl class="price-item">
+                <dt><span class="price-name">対面セルフケア指導</span><span class="price-time">60分</span></dt>
+                <dd><span class="price-kind">通常</span><span class="price-yen">5,000円</span></dd>
+                <dd class="is-monitor"><span class="price-kind">モニター</span><span class="price-yen">3,000円</span></dd>
+              </dl>
+              <dl class="price-item">
+                <dt><span class="price-name">Zoomセルフケア指導</span><span class="price-time">30〜60分</span></dt>
+                <dd><span class="price-kind">通常</span><span class="price-yen">3,000円</span></dd>
+                <dd class="is-monitor"><span class="price-kind">モニター</span><span class="price-yen">2,000円</span></dd>
+              </dl>
+              <dl class="price-item">
+                <dt><span class="price-name">対面施術＋セルフケア</span><span class="price-time">60分</span></dt>
+                <dd><span class="price-kind">通常</span><span class="price-yen">15,000円</span></dd>
+                <dd class="is-monitor"><span class="price-kind">モニター</span><span class="price-yen">7,000円</span></dd>
+              </dl>
+              <dl class="price-item">
+                <dt><span class="price-name">対面施術＋最終確認</span><span class="price-time">60分</span></dt>
+                <dd><span class="price-kind">通常</span><span class="price-yen">15,000円</span></dd>
+                <dd class="is-monitor"><span class="price-kind">モニター</span><span class="price-yen">7,000円</span></dd>
+              </dl>
             </div>
+            </details>
           </article>
+        </div>
+
+        <p class="menu-flow-link reveal">施術の流れについては、<a href="#flow">施術プログラム</a><span class="nowrap-part">をご覧ください。</span></p>
+
+        <div class="salon-fee reveal">
+          <h3 class="salon-fee-title">レンタルサロンをご利用の場合</h3>
+          <p><span class="ph">対面施術で</span><span class="ph">レンタルサロンを</span><span class="ph">利用する場合、</span><span class="ph">施術料金とは別に、</span><strong>1回につき2,000円（税込）</strong><span class="ph">をいただきます。</span></p>
+          <p class="salon-fee-total"><span class="ph">合計金額は</span><span class="ph">ご予約確定前に</span><span class="ph">ご案内します。</span></p>
+          <p class="salon-fee-example">料金の例：初回・モニター価格 7,000円 − 紹介特典 1,000円 ＝ 施術料金 6,000円<br>（レンタルサロンをご利用の場合は、別途2,000円）</p>
         </div>
 
         <div class="specials reveal">
           <div class="specials-head">特別なご案内</div>
           <div class="specials-grid">
             <article class="special">
-              <div class="kicker">人数限定</div>
-              <h4>デモ価格（先着30名様）</h4>
-              <p>施術内容は通常と同等です。施術品質向上へのご協力をお願いする特別価格です。</p>
-              <span class="pending">価格は準備中</span>
+              <div class="kicker">募集開始から6か月間</div>
+              <h4>オープニングモニター</h4>
+              <div class="special-big">
+                <p class="special-figure">初回〜7回目</p>
+                <p class="special-sub">モニター価格</p>
+              </div>
+              <ul class="special-points">
+                <li>募集期間中にお申し込みいただいた方が対象</li>
+                <li>8回目以降は通常料金</li>
+                <li>継続契約は不要（すべて都度払い）</li>
+              </ul>
             </article>
             <article class="special">
               <div class="kicker">ご紹介</div>
-              <h4>紹介特典</h4>
-              <p>ご家族やご友人をご紹介いただいた方への特典をご用意する予定です。</p>
-              <span class="pending">詳細は準備中</span>
+              <h4>ご紹介特典</h4>
+              <div class="special-big">
+                <p class="special-figure">1,000円OFF</p>
+                <p class="special-sub">紹介した方も、紹介された方も</p>
+              </div>
+              <ul class="special-points">
+                <li>紹介された方：初回に適用</li>
+                <li>紹介した方：ご紹介先の方の初回来院を確認後、次回来院時に適用</li>
+                <li>新しいご紹介ごとに適用</li>
+              </ul>
             </article>
             <article class="special">
               <div class="kicker">ご感想</div>
-              <h4>口コミクーポン</h4>
-              <p>ご感想の掲載にご協力いただける方への割引です。ご協力は完全任意です。</p>
-              <span class="pending">内容は準備中</span>
+              <h4>ご感想特典</h4>
+              <div class="special-big">
+                <p class="special-sub">ご感想のSNS掲載で、</p>
+                <p class="special-figure"><span class="special-pre">次回</span>500円OFF</p>
+              </div>
+              <div class="special-big special-big-next">
+                <p class="special-sub">ご感想＋お顔写真のSNS掲載で、</p>
+                <p class="special-figure"><span class="special-pre">次回</span>1,500円OFF</p>
+              </div>
+              <ul class="special-points">
+                <li>2つの特典は併用できません。</li>
+                <li>ご感想のSNS掲載ごとに、<span class="nowrap-part">次回も割引</span><span class="nowrap-part">（同じご感想は1回限り）</span></li>
+              </ul>
+              <p class="special-note special-consent">※掲載は任意です。掲載内容は事前にご確認いただき、ご本人の同意をいただきます。</p>
             </article>
           </div>
         </div>
 
         <ul class="menu-notes">
+          <li>※モニター価格・紹介特典・ご感想特典は併用できます（ご感想特典の2種類どうしは併用できません）。</li>
           <li>※当院の施術は医療行為ではありません。感じ方には個人差があります。</li>
         </ul>
 
         <div class="menu-cta reveal">
-          <a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservation" target="_blank" rel="noopener" class="btn btn-gold">ご予約・お問い合わせ <span class="arrow">→</span></a>
+          <a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservationForm" target="_blank" rel="noopener" class="btn btn-gold">ご予約・お問い合わせ <span class="arrow">→</span></a>
         </div>
       </div>
     </section>
@@ -433,6 +509,18 @@
               <p>だからこそ、痛みがやわらいだその先で、諦めていたことをもう一度楽しんでほしい。<br>あなたが「やりたい」と思うことを叶えられるよう、そばで寄り添いながら、一緒に歩んでいきたいと思っています。</p>
             </div>
 
+            <!-- スマートフォン用の短い紹介（PCでは表示しない。全文は下の元の文章） -->
+            <div class="profile-summary">
+              <div class="summary-item">
+                <h3>整体を始めたきっかけ</h3>
+                <p>30代前半から繰り返すぎっくり腰に悩み、様々な方法を試しても原因が分からなかった経験から、「なぜ痛みは起きるのか」を学び始めたことが原点です。</p>
+              </div>
+              <div class="summary-item">
+                <h3>大切にしていること</h3>
+                <p>整体だけでなく、セルフケア・栄養・体液循環なども含め、戻りにくい体づくりを大切にしています。</p>
+              </div>
+            </div>
+
             <div class="profile-text reveal">
               <h3>腰痛に悩んだ日々</h3>
               <p>はじめまして。アルマ整体セラピストの<span class="name-nowrap">田中身江子</span>です。</p>
@@ -466,7 +554,53 @@
             </blockquote>
 
             <p class="profile-sign reveal">どうぞよろしくお願いいたします。</p>
+
+            <!-- スマートフォン用：全文の開閉ボタン（PCでは表示しない） -->
+            <button type="button" class="profile-more-btn" aria-expanded="false">続きを読む</button>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 施術場所・アクセス ================= -->
+    <section class="access" id="access">
+      <div class="wrap">
+        <div class="access-head reveal">
+          <p class="eyebrow">Access</p>
+          <h2 class="section-title">施術場所・アクセス</h2>
+          <p class="section-lead">施術場所は、ご希望を伺いながら<span class="nowrap-part">ご案内いたします。</span></p>
+        </div>
+
+        <div class="access-cards">
+          <article class="menu-card access-card reveal">
+            <span class="tag">埼玉県吉川市</span>
+            <h3>自宅サロン</h3>
+            <p>吉川市内の自宅サロンで<span class="nowrap-part">施術を行います。</span></p>
+            <ul>
+              <li>詳細な住所は、ご予約確定後にご案内いたします。</li>
+              <li>自宅サロンは3階（階段）です。足腰に不安のある方や階段の昇降がご負担な方には、レンタルサロンでの施術をおすすめしています。</li>
+            </ul>
+          </article>
+
+          <article class="menu-card access-card reveal">
+            <span class="tag">ご希望のエリアで</span>
+            <h3>レンタルサロン</h3>
+            <p>日程確定後、ご希望のエリアを伺い調整いたします。</p>
+            <ul>
+              <li>レンタルサロンをご利用の場合、施術料金とは別に、<span class="nowrap-part">1回につき2,000円（税込）</span>のサロン利用料がかかります。</li>
+            </ul>
+          </article>
+
+          <article class="menu-card access-card reveal">
+            <span class="tag">ご希望の方に</span>
+            <h3>出張施術</h3>
+            <p>ご希望の方はお問い合わせください。</p>
+          </article>
+        </div>
+
+        <div class="access-cta reveal">
+          <p>ご予約の際に、ご希望の施術場所をお知らせください。</p>
+          <a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservationForm" target="_blank" rel="noopener" class="btn btn-gold">ご予約・お問い合わせ <span class="arrow">→</span></a>
         </div>
       </div>
     </section>
@@ -484,7 +618,7 @@
             <span class="step-num">01</span>
             <h3>予約・お問い合わせ</h3>
             <p>施術のご予約やお問い合わせは、こちらからお願いいたします。</p>
-            <a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservation" target="_blank" rel="noopener" class="btn btn-gold">予約・お問い合わせ <span class="arrow">→</span></a>
+            <a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservationForm" target="_blank" rel="noopener" class="btn btn-gold">予約・お問い合わせ <span class="arrow">→</span></a>
           </div>
           <div class="reserve-card reveal">
             <span class="step-num">02</span>
@@ -506,11 +640,11 @@
             </div>
             <div>
               <dt>自宅サロン</dt>
-              <dd>埼玉県吉川市<br><small>※詳細な住所はご予約確定後にご案内いたします。<br>※自宅サロンは3階（階段）となります。足腰に不安のある方や階段の昇降がご負担な方には、レンタルサロンでの施術をおすすめしております。</small></dd>
+              <dd>埼玉県吉川市<br><small>※詳細な住所はご予約確定後にご案内いたします。<br>※自宅サロンは3階（階段）です。足腰に不安のある方や階段の昇降がご負担な方には、レンタルサロンでの施術をおすすめしています。</small></dd>
             </div>
             <div>
               <dt>レンタルサロン</dt>
-              <dd>日程確定後、ご希望のエリアを伺い調整いたします。<br><small>※別途サロン利用料がかかります。金額はお問い合わせください。</small></dd>
+              <dd>日程確定後、ご希望のエリアを伺い調整いたします。<br><small>※レンタルサロンをご利用の場合、施術料金とは別に、<span class="nowrap-part">1回につき2,000円（税込）</span><span class="nowrap-part">がかかります。</span></small></dd>
             </div>
             <div>
               <dt>出張施術</dt>
@@ -531,16 +665,17 @@
         <a href="#menu">メニュー</a>
         <a href="#voices">お客様の声</a>
         <a href="#profile">プロフィール</a>
-        <a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservation" target="_blank" rel="noopener">ご予約・お問い合わせ</a>
+        <a href="#access">施術場所・アクセス</a>
+        <a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservationForm" target="_blank" rel="noopener">ご予約・お問い合わせ</a>
       </nav>
-      <p>※当院の施術は医療行為ではありません。効果には個人差があります。</p>
+      <p>※当院の施術は医療行為ではありません。感じ方には個人差があります。</p>
       <p>&copy; Alma Body Care</p>
     </div>
   </footer>
 
   <!-- スマートフォン用：画面下に固定するご予約ボタン -->
   <div class="mobile-cta">
-    <a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservation" target="_blank" rel="noopener">ご予約・お問い合わせ</a>
+    <a href="https://forms.gle/JCkZGnLkBEJnqaNr9" data-link="reservationForm" target="_blank" rel="noopener">ご予約・お問い合わせ</a>
     <a href="#" data-link="email">メール</a>
   </div>
 
@@ -591,6 +726,23 @@
           toggle.setAttribute('aria-expanded', 'false');
         });
       });
+
+      // プロフィール：スマートフォンでは短い紹介＋「続きを読む」で全文を開閉
+      // （JavaScriptが動かない環境では、従来どおり全文が表示されます）
+      var profileMain = document.querySelector('.profile-main');
+      var moreBtn = document.querySelector('.profile-more-btn');
+      if (profileMain && moreBtn) {
+        profileMain.classList.add('is-collapsible');
+        moreBtn.addEventListener('click', function () {
+          var open = profileMain.classList.toggle('is-open');
+          moreBtn.setAttribute('aria-expanded', open);
+          moreBtn.textContent = open ? '閉じる' : '続きを読む';
+          if (!open) {
+            // 閉じたときは、プロフィールの位置まで戻す
+            document.getElementById('profile').scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      }
 
       // スクロールでふわっと表示
       var items = document.querySelectorAll('.reveal');
