@@ -3083,3 +3083,73 @@ body,
   text-underline-offset: 4px;
 }
 .menu-flow-link a:hover { color: var(--gold-light); }
+
+/* ============================================================
+   v9 追加（2026-10-19）：2回目の料金カードと、ご紹介特典の表示
+   ・2回目：「痛みがなくなった場合／痛みが残っている場合」のラベルを各料金の上に付け、違いをひと目でわかるように
+   ・ご紹介特典：紹介された方／紹介した方を分けて表示し、割引後の金額を並べる
+   色は既存の深緑・アイボリー・ゴールドの設定だけを使う
+   ============================================================ */
+.price-box.price-cases { margin-top: 8px; }
+.price-item dt .price-case {
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  color: var(--gold-deep);
+}
+.price-item dt .price-case::before {   /* 小さな金の四角（■） */
+  content: "";
+  flex: none;
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+}
+
+/* ご紹介特典：紹介された方／紹介した方 */
+.referral-block {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(214, 189, 140, .35);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .04);
+}
+.special .referral-block p { margin: 0; line-height: 1.7; }
+.special .referral-who {
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--on-dark-gold);
+}
+.special .referral-what {
+  margin-top: 2px;
+  font-size: var(--fs-small);
+  font-weight: 700;
+  color: var(--on-dark);
+}
+.referral-prices { margin: 8px 0 0; }
+.referral-prices > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 10px;
+  padding-top: 6px;
+  border-top: 1px dashed rgba(214, 189, 140, .3);
+}
+.referral-prices > div + div { margin-top: 6px; }
+.referral-prices dt { font-size: var(--fs-caption); color: var(--on-dark-soft); }
+.referral-prices dd {
+  margin: 0;
+  font-size: var(--fs-small);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: var(--on-dark-soft);
+}
+.referral-prices dd strong { color: var(--on-dark-gold); font-weight: 700; }
+.referral-block + .special-points { margin-top: 14px; }
+.special .special-points + .special-note:not(.special-consent) { margin-top: 10px; }
+/* 割引後の金額：どの幅でも「ラベルの下に金額」で、2つの行の並びをそろえる */
+.referral-prices > div { flex-direction: column; gap: 0; }
