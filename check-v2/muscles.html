@@ -1,0 +1,111 @@
+<!doctype html>
+<!-- 筋肉イラスト13種類の確認用一覧（公開用ではない）。見た目の設定は index.html と同じ -->
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>筋肉イラスト一覧</title>
+  <meta name="robots" content="noindex">
+  <!-- 字体はアルマ整体ホームページと同じ（見出し：しっぽり明朝／本文：Zen角ゴシック New／英字の飾り：Cormorant Garamond） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // 色はアルマ整体ホームページ（alma-homepage/design-sample/style-v8.css）の色をそのまま使う。
+    // 既存の色名（brand / gray / white / cream）をホームページの色に置き換えて、画面全体をまとめて合わせている
+    //   深緑 green-800 #1f3a2e / green-900 #1a3128 / green-600 #3e5c4a
+    //   ゴールド gold #b8975a / gold-light #d6bd8c / gold-deep #8f7038
+    //   アイボリー beige-50 #fbf8f2 / beige-100 #f5efe4 / beige-200 #ece2d1 / beige-300 #dccdb4
+    //   文字 ink #2b3a33 / ink-soft #56665e
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            white: "#fbf8f2",
+            cream: "#f5efe4",
+            brand: { 50: "#f5efe4", 100: "#ece2d1", 200: "#d6bd8c", 500: "#1f3a2e", 600: "#3e5c4a", 700: "#1f3a2e", 900: "#1a3128" },
+            gold: { DEFAULT: "#b8975a", light: "#d6bd8c", deep: "#8f7038" },
+            gray: { 50: "#f5efe4", 100: "#ece2d1", 200: "#ece2d1", 300: "#dccdb4", 400: "#56665e", 500: "#56665e", 600: "#56665e", 700: "#2b3a33", 800: "#2b3a33" },
+            ink: { DEFAULT: "#2b3a33", soft: "#56665e" },
+          },
+          fontFamily: {
+            sans: ['"Zen Kaku Gothic New"', '"Hiragino Sans"', '"Yu Gothic"', "sans-serif"],
+            serif: ['"Shippori Mincho"', '"Yu Mincho"', '"YuMincho"', "serif"],
+            en: ['"Cormorant Garamond"', "serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <!-- ホームページと同じ部品（ゴールドのボタン・枠線ボタン・見出しのゴールドライン・英字の飾り） -->
+  <style>
+    body { letter-spacing: .04em; }
+    h1, h2, h3 { font-family: "Shippori Mincho", "Yu Mincho", "YuMincho", serif; font-weight: 600; }
+    .btn-gold {
+      background: linear-gradient(135deg, #cfb27a 0%, #b8975a 50%, #9c7c43 100%);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35), 0 0 0 1px rgba(184, 151, 90, .45), 0 10px 24px -12px rgba(143, 112, 56, .75);
+      letter-spacing: .12em;
+    }
+    .btn-outline {
+      border: 1px solid #b8975a;
+      color: #1f3a2e;
+      background: rgba(251, 248, 242, .6);
+      box-shadow: inset 0 0 0 3px rgba(251, 248, 242, .6), inset 0 0 0 4px rgba(184, 151, 90, .25);
+      letter-spacing: .1em;
+    }
+    .btn-outline:hover { background: #1f3a2e; border-color: #1f3a2e; color: #fbf8f2; }
+    .gold-rule::after {
+      content: "";
+      display: block;
+      width: 72px;
+      height: 7px;
+      margin-top: 8px;
+      background:
+        linear-gradient(#b8975a, #b8975a) left center / 100% 1px no-repeat,
+        radial-gradient(circle, #b8975a 0 2.5px, transparent 3px) left center / 7px 7px no-repeat;
+    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; letter-spacing: .16em; color: #8f7038; }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: #b8975a; }
+    .card-gold { border: 1px solid rgba(184, 151, 90, .45); }
+    /* check-v2：結果画面のカード（画像1に合わせた、やわらかい白い面とうすい影） */
+    .card-soft { background: #fdfbf7; border: 1px solid rgba(184, 151, 90, .2); box-shadow: 0 12px 30px -24px rgba(31, 58, 46, .45); }
+    .header-line::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; opacity: .55;
+      background: linear-gradient(90deg, transparent, #b8975a 20%, #b8975a 80%, transparent);
+    }
+  </style>
+</head>
+
+<body class="bg-cream text-ink font-sans antialiased">
+  <header class="header-line relative bg-cream/90">
+    <div class="mx-auto max-w-5xl px-4 py-4">
+      <p class="eyebrow text-sm">Muscle Illustrations</p>
+      <h1 class="mt-0.5 text-xl text-brand-700">筋肉イラスト一覧（確認用・全13種類）</h1>
+      <p class="mt-1 text-xs leading-relaxed text-ink-soft">からだの痛みチェック（check-v2）の結果画面で使う筋肉イラストです。公開用のページではありません。各カードの下に、そのイラストを表示する痛みのタイプを記載しています。</p>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-5xl px-4 py-6">
+    <div id="muscle-list" class="grid grid-cols-1 gap-5 md:grid-cols-2"></div>
+    <p class="mt-8 text-center text-xs"><a href="index.html" class="text-gold-deep underline underline-offset-2">からだの痛みチェック（check-v2）へ戻る</a></p>
+  </main>
+
+  <!-- 読み込み順：設定 → 筋肉のイラスト（判定ロジックと画面は使わない） -->
+  <script src="config.js"></script>
+  <script src="figures.js"></script>
+  <script>
+    // 13種類すべてのカードを並べ、どの痛みのタイプで表示されるかを添える（表示の確認用）
+    const list = document.getElementById("muscle-list");
+    Object.entries(MUSCLE_FIGURES).forEach(([key, figure], i) => {
+      const wrap = figEl("section", "");
+      wrap.appendChild(figEl("p", "mb-1.5 text-[11px] font-semibold tracking-[0.1em] text-gold-deep", `${String(i + 1).padStart(2, "0")} ／ ${figure.art.angle}`));
+      wrap.appendChild(renderMuscleCard(key, figure));
+      const types = Object.values(RESULTS).filter((r) => (r.figures || []).includes(key)).map((r) => `${r.conditionType}（${r.feature}）`);
+      wrap.appendChild(figEl("p", "mt-2 text-[11px] leading-relaxed text-ink-soft", `表示するタイプ：${types.join("／")}`));
+      list.appendChild(wrap);
+    });
+  </script>
+</body>
+</html>

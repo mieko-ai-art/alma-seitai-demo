@@ -1,0 +1,253 @@
+<!doctype html>
+<!-- 痛みの問診チェックの画面構造。質問は app.js が config.js から組み立てて #question-form に入れる -->
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- テスト公開用：検索エンジンに載せない -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>からだの痛みチェック</title>
+  <!-- 字体はアルマ整体ホームページと同じ（見出し：しっぽり明朝／本文：Zen角ゴシック New／英字の飾り：Cormorant Garamond） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Shippori+Mincho:wght@500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // 色はアルマ整体ホームページ（alma-homepage/design-sample/style-v8.css）の色をそのまま使う。
+    // 既存の色名（brand / gray / white / cream）をホームページの色に置き換えて、画面全体をまとめて合わせている
+    //   深緑 green-800 #1f3a2e / green-900 #1a3128 / green-600 #3e5c4a
+    //   ゴールド gold #b8975a / gold-light #d6bd8c / gold-deep #8f7038
+    //   アイボリー beige-50 #fbf8f2 / beige-100 #f5efe4 / beige-200 #ece2d1 / beige-300 #dccdb4
+    //   文字 ink #2b3a33 / ink-soft #56665e
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            white: "#fbf8f2",
+            cream: "#f5efe4",
+            brand: { 50: "#f5efe4", 100: "#ece2d1", 200: "#d6bd8c", 500: "#1f3a2e", 600: "#3e5c4a", 700: "#1f3a2e", 900: "#1a3128" },
+            gold: { DEFAULT: "#b8975a", light: "#d6bd8c", deep: "#8f7038" },
+            gray: { 50: "#f5efe4", 100: "#ece2d1", 200: "#ece2d1", 300: "#dccdb4", 400: "#56665e", 500: "#56665e", 600: "#56665e", 700: "#2b3a33", 800: "#2b3a33" },
+            ink: { DEFAULT: "#2b3a33", soft: "#56665e" },
+          },
+          fontFamily: {
+            sans: ['"Zen Kaku Gothic New"', '"Hiragino Sans"', '"Yu Gothic"', "sans-serif"],
+            serif: ['"Shippori Mincho"', '"Yu Mincho"', '"YuMincho"', "serif"],
+            en: ['"Cormorant Garamond"', "serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <!-- ホームページと同じ部品（ゴールドのボタン・枠線ボタン・見出しのゴールドライン・英字の飾り） -->
+  <style>
+    body { letter-spacing: .04em; }
+    h1, h2, h3 { font-family: "Shippori Mincho", "Yu Mincho", "YuMincho", serif; font-weight: 600; }
+    .btn-gold {
+      background: linear-gradient(135deg, #cfb27a 0%, #b8975a 50%, #9c7c43 100%);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .35), 0 0 0 1px rgba(184, 151, 90, .45), 0 10px 24px -12px rgba(143, 112, 56, .75);
+      letter-spacing: .12em;
+    }
+    .btn-outline {
+      border: 1px solid #b8975a;
+      color: #1f3a2e;
+      background: rgba(251, 248, 242, .6);
+      box-shadow: inset 0 0 0 3px rgba(251, 248, 242, .6), inset 0 0 0 4px rgba(184, 151, 90, .25);
+      letter-spacing: .1em;
+    }
+    .btn-outline:hover { background: #1f3a2e; border-color: #1f3a2e; color: #fbf8f2; }
+    .gold-rule::after {
+      content: "";
+      display: block;
+      width: 72px;
+      height: 7px;
+      margin-top: 8px;
+      background:
+        linear-gradient(#b8975a, #b8975a) left center / 100% 1px no-repeat,
+        radial-gradient(circle, #b8975a 0 2.5px, transparent 3px) left center / 7px 7px no-repeat;
+    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500; letter-spacing: .16em; color: #8f7038; }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: #b8975a; }
+    .card-gold { border: 1px solid rgba(184, 151, 90, .45); }
+    /* check-v2：結果画面のカード（画像1に合わせた、やわらかい白い面とうすい影） */
+    .card-soft { background: #fdfbf7; border: 1px solid rgba(184, 151, 90, .2); box-shadow: 0 12px 30px -24px rgba(31, 58, 46, .45); }
+    .header-line::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; opacity: .55;
+      background: linear-gradient(90deg, transparent, #b8975a 20%, #b8975a 80%, transparent);
+    }
+  </style>
+</head>
+<body class="bg-cream text-ink font-sans antialiased">
+  <header class="header-line relative bg-cream/90">
+    <div class="max-w-xl mx-auto px-4 py-4">
+      <p class="eyebrow text-sm">Pain Check</p>
+      <h1 class="mt-0.5 text-xl text-brand-700">からだの痛みチェック</h1>
+    </div>
+  </header>
+
+  <main class="max-w-xl mx-auto px-4 py-6">
+    <!-- ===== 問診フォーム ===== -->
+    <section id="view-form">
+      <div class="card-gold mb-5 rounded-[18px] bg-white p-5">
+        <h2 class="gold-rule text-lg text-brand-700">いくつかの質問にお答えください</h2>
+        <p class="mt-3 text-sm leading-relaxed text-ink-soft">
+          回答をもとに、痛みのタイプや考えられる要因、改善までの期間の目安などをお伝えします。所要時間は約2分です。お名前などの個人情報は入力不要です。
+        </p>
+      </div>
+
+      <form id="question-form" class="space-y-4" novalidate></form>
+
+      <p id="form-error" class="hidden mt-4 rounded-xl bg-rose-50 px-4 py-3 text-sm text-rose-700"></p>
+      <button id="submit-btn" type="submit" form="question-form"
+        class="btn-gold mt-6 w-full rounded-full py-4 font-medium transition hover:-translate-y-0.5 active:scale-[0.99]">
+        結果を見る
+      </button>
+    </section>
+
+    <!-- ===== 結果（① タイプ ② 改善までの目安 ③ 原因と解決策 ④ 予約・お問い合わせ ⑤ 結果の保存〈任意〉） ===== -->
+    <section id="view-result" class="hidden space-y-3">
+      <!-- 結果画面の見出し -->
+      <div class="pb-1">
+        <p class="eyebrow text-sm">Result</p>
+        <h2 class="gold-rule mt-1 text-[26px] tracking-[0.1em] text-brand-700">問診結果</h2>
+      </div>
+
+      <!-- ① 痛みのタイプ -->
+      <article class="relative overflow-hidden rounded-[20px] bg-gradient-to-br from-brand-500 to-brand-900 px-5 py-6 text-white shadow-[0_18px_30px_-22px_rgba(31,58,46,.5)]">
+        <span class="pointer-events-none absolute inset-2 rounded-[14px] border border-gold/50"></span>
+        <p class="relative text-xs font-medium tracking-[0.12em] text-gold-light">あなたの痛みのタイプ</p>
+        <p id="result-type-name" class="relative mt-1 font-serif text-2xl font-semibold leading-snug"></p>
+        <p id="result-type-feature" class="relative mt-2 text-xs text-white/85"></p>
+        <p id="result-type-summary" class="relative mt-2 text-xs leading-relaxed text-white/90"></p>
+        <p class="relative mt-3 inline-block rounded-full border border-gold/60 px-3 py-1 text-[11px] text-white/90">問診結果をもとにした参考判定です</p>
+      </article>
+
+      <!-- ② 改善までの目安（時間の流れだけを見せる） -->
+      <article class="card-soft rounded-[22px] p-5">
+        <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+          <h2 class="gold-rule whitespace-nowrap text-[22px] tracking-[0.08em] text-brand-700">改善までの目安</h2>
+          <p id="result-duration" class="shrink-0 text-[11px] text-gray-500"></p>
+        </div>
+        <ol id="result-flow" class="mt-3"></ol>
+        <div id="result-rate" class="hidden mt-3 rounded-lg bg-gray-50 px-3 py-2 text-sm">
+          <p class="text-[11px] text-gray-500">改善見込み（実績データにもとづく参考値）</p>
+          <p id="result-rate-text" class="font-bold"></p>
+          <p id="result-rate-basis" class="text-[11px] text-gray-500"></p>
+        </div>
+        <p id="result-period-note" class="mt-3 text-[11px] text-gray-400"></p>
+      </article>
+
+      <!-- ③ 原因と解決策（原因に対して何をするか） -->
+      <article class="card-soft rounded-[22px] p-5">
+        <h2 class="gold-rule text-[22px] tracking-[0.08em] text-brand-700">原因と解決策</h2>
+        <div class="mt-4 grid gap-4">
+          <!-- check-v2：原因と解決策は元の無料診断と同じ文章で、最初から表示する。筋肉名・イラスト・補足説明だけを折りたたむ -->
+          <div>
+            <div class="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+              <h3 id="result-causes-title" class="text-base text-ink"></h3>
+              <p id="result-causes-basis" class="rounded-full border border-gold/50 px-2 py-0.5 text-[10px] text-gold-deep"></p>
+            </div>
+            <p id="result-causes-lead" class="mt-1.5 text-xs text-ink-soft"></p>
+            <ul id="result-causes" class="mt-1.5 space-y-1.5"></ul>
+          </div>
+          <div class="rounded-[18px] border border-gold/30 bg-[#f7f1e6] px-4 py-3.5">
+            <h3 class="text-lg text-brand-700">解決策</h3>
+            <ul id="result-solutions" class="mt-1 divide-y divide-gold/20"></ul>
+          </div>
+          <!-- 関係する筋肉（筋肉のあるタイプだけ表示。最初は閉じておき、ボタンで開く） -->
+          <div id="result-figures-box" class="hidden">
+            <button id="result-figures-toggle" type="button" aria-expanded="false" aria-controls="result-figures-panel"
+              class="btn-outline flex w-full items-center justify-center gap-2 rounded-full py-3 text-sm font-medium transition">
+              <span id="result-figures-toggle-label"></span>
+              <span id="result-figures-toggle-icon" class="text-base leading-none text-gold-deep" aria-hidden="true">＋</span>
+            </button>
+            <div id="result-figures-panel" class="hidden mt-3">
+              <h3 id="result-figures-title" class="text-sm text-ink-soft"></h3>
+              <div id="result-figures" class="mt-2 grid grid-cols-1 gap-3"></div>
+            </div>
+          </div>
+        </div>
+        <p id="result-causes-note" class="mt-3 text-[11px] leading-relaxed text-ink-soft"></p>
+      </article>
+
+      <!-- ④ 予約・お問い合わせ（結果を保存しなくても使える） -->
+      <article class="card-soft rounded-[22px] p-5">
+        <h2 id="counseling-title" class="gold-rule text-[22px] tracking-[0.08em] text-brand-700"></h2>
+        <div id="counseling-buttons" class="mt-4 space-y-2"></div>
+        <p id="counseling-note" class="mt-2 text-center text-[11px] text-gray-500"></p>
+      </article>
+
+      <!-- ⑤ 結果の保存（任意）。押した方だけ入力欄を開く。
+           <form> を使わないのは、万一の送信で入力内容が URL に載らないようにするため -->
+      <article id="save-card" class="card-soft rounded-[22px] p-5">
+        <h2 id="save-card-title" class="gold-rule text-lg tracking-[0.06em] text-brand-700"></h2>
+        <p id="save-card-text" class="mt-1 text-xs leading-relaxed text-gray-500"></p>
+        <button id="save-open-btn" type="button"
+          class="btn-outline mt-3 w-full rounded-full py-3 text-sm font-medium transition"></button>
+
+        <div id="save-panel" class="hidden mt-1">
+          <h3 id="save-form-title" class="text-base text-brand-700"></h3>
+
+          <div class="mt-3 space-y-3">
+            <div>
+              <label for="save-name" id="save-name-label" class="text-xs font-bold text-gray-700"></label>
+              <input id="save-name" type="text" autocomplete="off" maxlength="50"
+                class="mt-1 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base focus:border-gold focus:outline-none">
+              <p id="save-name-error" class="hidden mt-1 text-xs text-rose-600" role="alert"></p>
+            </div>
+            <div>
+              <label for="save-email" id="save-email-label" class="text-xs font-bold text-gray-700"></label>
+              <input id="save-email" type="email" inputmode="email" autocomplete="off" maxlength="254"
+                class="mt-1 w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base focus:border-gold focus:outline-none">
+              <p id="save-email-hint" class="mt-1 text-[11px] leading-relaxed text-gray-500"></p>
+              <p id="save-email-error" class="hidden mt-1 text-xs text-rose-600" role="alert"></p>
+            </div>
+          </div>
+
+          <div class="mt-4 rounded-xl bg-gray-50 p-3">
+            <p id="save-purpose-title" class="text-xs font-bold text-gray-700"></p>
+            <p id="save-purpose-lead" class="mt-1 text-[11px] leading-relaxed text-gray-600"></p>
+            <ul id="save-purposes" class="mt-1.5 space-y-1"></ul>
+            <ul id="save-purpose-notes" class="mt-2 space-y-0.5"></ul>
+          </div>
+
+          <label class="mt-3 flex cursor-pointer items-start gap-2.5 rounded-xl border-2 border-gray-200 px-3 py-3 has-[:checked]:border-gold has-[:checked]:bg-[rgba(214,189,140,.16)]">
+            <input id="save-consent" type="checkbox" class="mt-0.5 h-5 w-5 shrink-0 accent-[#b8975a]">
+            <span id="save-consent-label" class="text-sm leading-snug"></span>
+          </label>
+          <p id="save-consent-error" class="hidden mt-1 text-xs text-rose-600" role="alert"></p>
+
+          <!-- 準備中の案内（保存は行わない。保存できたと誤解されない表示にする） -->
+          <div id="save-not-ready" class="hidden mt-4 rounded-xl border border-amber-200 bg-amber-50 p-3" role="status">
+            <p id="save-not-ready-title" class="text-sm font-bold text-amber-800"></p>
+            <p id="save-not-ready-text" class="mt-1 text-xs leading-relaxed text-amber-900"></p>
+            <button id="save-not-ready-close" type="button"
+              class="mt-3 w-full rounded-full border border-amber-300 bg-white py-2.5 text-sm font-bold text-amber-800 hover:bg-amber-100"></button>
+          </div>
+
+          <div id="save-actions" class="mt-4 space-y-2">
+            <button id="save-submit-btn" type="button"
+              class="w-full rounded-full bg-brand-500 py-3.5 text-sm font-medium tracking-[0.1em] text-white shadow-sm hover:bg-brand-600"></button>
+            <button id="save-cancel-btn" type="button"
+              class="w-full py-2 text-xs font-semibold text-gray-500 underline underline-offset-2"></button>
+          </div>
+        </div>
+      </article>
+
+      <button id="restart-btn" type="button"
+        class="btn-outline w-full rounded-full py-3 text-sm font-medium transition">
+        もう一度チェックする
+      </button>
+    </section>
+  </main>
+
+  <footer class="py-8 text-center text-xs text-gray-400">からだの痛みチェック</footer>
+
+  <!-- 読み込み順：設定 → 判定ロジック → 筋肉のイラスト → 画面 -->
+  <script src="config.js"></script>
+  <script src="logic.js"></script>
+  <script src="figures.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
