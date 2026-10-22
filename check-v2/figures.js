@@ -254,12 +254,47 @@ function renderOverlayArt(key, figure) {
   return svg;
 }
 
+// 見出しの改行位置（「|」の位置でだけ改行する）。iPhone の Safari は日本語を文節で折り返せないため、区切りを決めておく。
+// 「|」を除いた文字が config.js の title と同じときだけ使う（違うときは、そのまま表示する）
+const TITLE_PHRASES = {
+  supraspinatus: "肩を|持ち上げる|動きを|支える筋肉",
+  subscapularis: "肩の関節を|安定させる筋肉",
+  levator: "首と肩甲骨を|つなぐ筋肉",
+  lowerTrap: "肩甲骨の動きを|支える筋肉",
+  multifidus: "背骨を|安定させる筋肉",
+  gluteMed: "お尻の横で|骨盤を支える筋肉",
+  deepRotators: "股関節を|安定させる|深い筋肉",
+  iliacus: "脚の付け根の|動きに関わる筋肉",
+  transversus: "お腹を内側から|支える筋肉",
+  pecMinor: "胸と肩甲骨を|つなぐ筋肉",
+  vastus: "太もも前側で|膝を伸ばす筋肉",
+  brachialis: "肘を曲げる筋肉",
+  anconeus: "肘を伸ばす|動きを助ける筋肉",
+};
+
+/** カードの大きな見出し（分かりやすい日本語。文節の区切りでだけ改行する） */
+function renderMuscleTitle(key, figure) {
+  const title = figure.title || figure.name;
+  const node = figEl("p", "font-serif text-[22px] font-semibold leading-snug tracking-[0.06em] text-brand-700 sm:text-[24px]");
+  const phrases = TITLE_PHRASES[key];
+  if (phrases && phrases.replaceAll("|", "") === title) {
+    phrases.split("|").forEach((part) => node.appendChild(figEl("span", "inline-block", part)));
+  } else {
+    node.textContent = title;
+  }
+  return node;
+}
+
 /** 筋肉カード1枚（筋肉名・場所の短い説明・イラスト）。13種類すべて同じ形 */
 function renderMuscleCard(key, figure) {
   const card = figEl("figure", "rounded-[22px] border border-gold/25 px-4 pb-4 pt-5 shadow-[0_12px_30px_-24px_rgba(31,58,46,.45)] sm:px-6");
   card.style.background = ART.cardBg;
-  card.appendChild(figEl("p", "font-serif text-[28px] font-semibold leading-tight tracking-[0.1em] text-brand-700 sm:text-[30px]", figure.name));
-  card.appendChild(figEl("figcaption", "mt-1.5 font-serif text-[16px] leading-snug tracking-[0.08em] text-ink sm:text-[17px]", figure.place));
+  // 大きな見出しは分かりやすい日本語（title）、その下に小さめの文字で正式な筋肉名、場所の短い説明
+  const caption = figEl("figcaption", "");
+  caption.appendChild(renderMuscleTitle(key, figure));
+  if (figure.title) caption.appendChild(figEl("p", "mt-1.5 text-[14px] font-medium leading-snug tracking-[0.04em] text-gold-deep sm:text-[15px]", `筋肉名：${figure.name}`));
+  caption.appendChild(figEl("p", "mt-1 text-[14px] leading-snug tracking-[0.04em] text-ink-soft", figure.place));
+  card.appendChild(caption);
   const box = figEl("div", "mt-3");
   if (figure.art.image) {
     // ユーザー提供の完成イラスト（人物・筋肉・拡大図が描かれた画像）をそのまま表示する
