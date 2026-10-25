@@ -3153,3 +3153,30 @@ body,
 .special .special-points + .special-note:not(.special-consent) { margin-top: 10px; }
 /* 割引後の金額：どの幅でも「ラベルの下に金額」で、2つの行の並びをそろえる */
 .referral-prices > div { flex-direction: column; gap: 0; }
+
+/* ============================================================
+   v9 追加（2026-10-24）：新しいキャッチコピーの収まりを調整
+   「その痛み、あきらめる前に。／これからも、自分らしく動ける体へ。」は従来より長いため、
+   ・PC：2行のまま。文字の大きさは従来を上限に、2行目が文章の列に収まるよう自動で小さくする
+   ・スマホ：区切りのよい位置（「、」の後）でだけ改行し、3行で表示。ゴールドの下線は折り返した行にも付ける
+   説明文も文節（.nowrap-part）の区切りでだけ改行する。色・字体は変更しない
+   ============================================================ */
+@media (min-width: 961px) {
+  .hero-copy { container-type: inline-size; }
+  .hero-title .line {
+    font-size: min(1em, 5.2cqi);   /* 17文字の2行目が列の幅に収まる大きさ（従来の大きさが上限） */
+    letter-spacing: .1em;
+  }
+}
+@media (max-width: 960px) {
+  .hero-title .line {
+    white-space: normal;
+    letter-spacing: .06em;
+    font-size: min(1em, calc((100vw - 32px) / 14.2));   /* 1行目（13文字）が画面幅に収まる大きさ */
+  }
+  .hero-title .accent {
+    display: inline;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+}
