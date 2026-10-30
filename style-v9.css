@@ -3180,3 +3180,7 @@ body,
     box-decoration-break: clone;
   }
 }
+
+/* 2026-10-29 句点のぶら下げ：幅320pxで「…ありませ／ん。」と1文字だけの行になるのを防ぐ。
+   行末に入りきらない「。」「、」を行の右の外へ少しはみ出させる（iPhone の Safari のみ対応。ほかのブラウザは従来どおり） */
+.hang-end { hanging-punctuation: allow-end; }
